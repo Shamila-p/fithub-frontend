@@ -1,0 +1,10 @@
+.containers {
+    display: inline-grid;
+    flex-wrap: wrap;
+    font-size: 30px;
+    text-align: right;
+    width: calc(100% - 260px);
+    margin: 3vh;
+    height: min-content;
+    
+  }

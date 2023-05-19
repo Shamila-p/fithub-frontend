@@ -1,0 +1,79 @@
+.container {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .white-bg {
+    background-color:white;
+    height: 100vh;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .box {
+    width: 250px;
+    height: 250px;
+    background-color: white;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease-in-out;
+    border: 1px ;
+    border-radius: 10px;
+  }
+  
+  .box:hover {
+    background-color: rgb(224, 179, 30); /* Change this to the desired hover color */
+  }
+  
+  .image {
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    background-color: rgb(224, 179, 30); /* Change this to the desired image background color */
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .box:hover .image {
+    background-color: white; /* Change this to the desired hover color for the image */
+  }
+  
+  h2 {
+    color: black; /* Change this to the desired color for the heading */
+    margin-top: 20px;
+    font-size: 25px;
+  }
+
+  .category-row{
+    display: flex;
+    flex-direction: row;
+    margin-left: 137px;
+    margin-top: -37px;
+  }
+
+
+  .category-col1{
+    width: 37%;
+    margin-top: 118px;
+  }
+  .category-col1 img{
+    width: 353px;
+    margin-left: 62px;
+    margin-top: 130px;
+  }
+  .category-col2{
+    width: 43%;
+    margin-top: 141px;
+  }
+
+  .category-col2 p{
+    line-height: 1.5rem;
+  }
+  

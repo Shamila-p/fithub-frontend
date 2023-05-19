@@ -1,0 +1,31 @@
+.footer-main{
+    display :flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color:white
+}
+.footer-head{
+    display:flex;
+    flex-direction: row;
+}
+.footer-head h3{
+    margin-top: 33px;
+    margin-left: 14px;
+}
+.gym{
+    margin-top: 30px;
+
+}
+.links ul{
+    display:flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 50px;
+
+}
+.links ul li{
+    text-decoration: none;
+    justify-content: space-between;
+}

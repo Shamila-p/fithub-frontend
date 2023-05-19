@@ -1,0 +1,84 @@
+.pricing-plans-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pricing-plan {
+    border: 1px solid #ccc;
+    border-radius: 13px;
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(rgb(0 0 0 / 94%), rgba(0, 0, 0, 0.8));
+    width: 18%;
+    min-height: 368px;
+    margin-left: 44px;
+    color: white;
+    
+  }
+  
+  .plan-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 14px;
+    color: white;
+    padding-top: 20px;
+    
+  }
+  
+  .plan-price {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  .currency {
+    font-size: 20px;
+    vertical-align: middle;
+  }
+  
+  .amount {
+    font-size: 48px;
+    font-weight: bold;
+    vertical-align: middle;
+  }
+  
+  .period {
+    font-size: 20px;
+    vertical-align: middle;
+  }
+  
+  .plan-features {
+    list-style-type: circle;
+    padding: 0;
+    margin-bottom: 20px;
+    text-align: left;
+    margin-left: 43px;
+    line-height: 1.8rem;
+  }
+  
+  .plan-features li {
+    margin-bottom: 10px;
+  }
+  
+  .plan-button {
+    padding: 10px 20px;
+    font-size: 15px;
+    background-color: #fff;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /* position: fixed; */
+    /* top: 87%; */
+    /* margin-left: -64px; */
+    font-weight: 600;
+  }
+  
+  .plan-button:hover {
+    background-color: #45a049;
+  }
+  
+  .plan-button:focus {
+    outline: none;
+  }
+  

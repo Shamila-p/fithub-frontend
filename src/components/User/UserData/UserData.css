@@ -1,0 +1,132 @@
+.background_container {
+    background-color: #000000;
+    min-height: 96vh;
+    min-width: 96vw;
+    font-family: "Manrope", sans-serif;
+    color: #ffffff;
+    padding: 1rem;
+}
+
+.first_view_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 96vh;
+    text-align: center;
+    margin: 0 auto;
+   
+}
+
+.fv_heading {
+    font-size: 2.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.fv_heading span {
+    color: #e5c827;
+}
+
+.fv_tagline {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+
+.fv_button {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    padding: 0.5rem 2.25rem;
+    border: none;
+    margin-top: 1rem;
+    border: 2px solid #e5c827;
+    background-color: #000000;
+    color: #e5c827;
+}
+
+.box_container {
+    background-color: #1f1f1f;
+    color: #ffffff;
+    font-family: "Manrope", sans-serif;
+    padding: 16px 16px 42px 16px;
+    min-width: 400px;
+    border-radius: 4px;
+  }
+  .home-container{
+    display: flex;
+    flex-direction: column;
+  }
+  .create-task-input {
+    width: 85px;
+    min-height: 19px;
+    padding: 16px;
+    border: 1px solid silver;
+    border-radius: 8px;
+    margin: 20px;
+    max-width: 600px;
+    text-align: center;
+    background-color: #1f1f1f;
+    min-width: 338px;
+    color: white;
+  
+  }
+  
+  .create-task-button {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    padding: 0.5rem 2.25rem;
+    border: none;
+    margin: auto;
+    color: #000000;
+    background-color: #e5c827;
+    max-width: 168px;
+  
+  }
+  
+  .create-task-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  
+.button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 0.75rem;
+    column-gap: 0.75rem;
+    font-weight: 500;
+}
+
+.next-button {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    padding: 0.5rem 2.25rem;
+    border: none;
+    margin-top: 1rem;
+    color: #000000;
+    background-color: #e5c827;
+}
+
+.previous-button {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    padding: 0.5rem 2.25rem;
+    border: none;
+    margin-top: 1rem;
+    border: 2px solid #e5c827;
+    background-color: #000000;
+    color: #e5c827;
+}
