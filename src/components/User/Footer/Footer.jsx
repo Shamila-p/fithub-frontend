@@ -11,7 +11,6 @@ function Footer() {
   return (
     <div className='footer-main'>
         <div className="footer-head">
-        <SportsGymnasticsRoundedIcon className='gym'/>
         <h3>Fithub</h3>
         </div>
         <div className="links">
@@ -29,7 +28,7 @@ function Footer() {
           <LinkedInIcon/>
         </div>
         <div className="right-reserve">
-            <p>@2023 <span>Fithub</span>. All rights reserved</p>
+            <p style={{marginBottom:"15px"}}>@2023 <span>Fithub</span>. All rights reserved</p>
         </div>
     </div>
   )

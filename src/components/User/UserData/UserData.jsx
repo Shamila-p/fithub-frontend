@@ -1,17 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import './UserData.css'
+import axios from '../../../Utils/axios'
+import {editUser} from '../../../Utils/urls'
+import { useNavigate } from 'react-router-dom';
+import jwt_decode from "jwt-decode";
+import { useSelector } from 'react-redux';
+
+
 
 function UserData() {
         const [age,setAge] = useState("")
         const [gender,setGender] = useState("")
         const [height,setHeight] = useState("")
         const [weight,setWeight] = useState("")
-
         const [isShowAge,setIsShowAge] = useState(false)
         const [isShowGender,setIsShowGender] = useState(false)
         const [isShowHeight,setIsShowHeight] = useState(false)
         const [isShowWeight,setIsShowWeight] = useState(false)
         const [isFinal,setIsFinal] = useState(false)
+        const user = useSelector(state=>state.user.user)
+
+        const navigate=useNavigate()
 
         const handleShowPage = () => {
             setIsShowAge(true)
@@ -59,8 +68,25 @@ function UserData() {
         const handlePrevious5 = () => {
             setIsShowAge(false)
         };
+
+        const authTokens = JSON.parse(localStorage.getItem('user_authTokens'))
+        const access = authTokens?.access
+        const decoded_token = jwt_decode(access)
+        const userId=decoded_token.user_id
+        const body={
+            height:height,
+            weight:weight,
+            age:age,
+            gender:gender,
+            user_id:userId
+          }
         const handleSubmit= () => {
-           //save to databse
+           axios.post(`${editUser}${userId}`,body,{
+          headers: { "Authorization": `Bearer ${access}`,"Content-Type": "application/json" },
+           }).then((response)=>{
+            console.log('success')
+            navigate(`/user/profile`)
+          })
         };
         const renderAgeInput  = () => {
             return (
@@ -163,6 +189,9 @@ function UserData() {
                 </div>
             );
         };
+
+
+       
   return (
     <div className="background_container">
         <div className="first_view_container">

@@ -2,6 +2,7 @@ import React ,{useState} from 'react'
 // import Dashboard from '../../../pages/Admin/Dashboard/Dashboard'
 import Sidebar from '../Sidebar/Sidebar'
 import '../../../pages/Admin/Dashboard/Dashboard.css'
+import './EditUser.css'
 import { SidebarData } from '../Sidebar/data';
 import { TextField, Button, Container, Stack } from '@mui/material';
 import { Link,useParams } from "react-router-dom"
@@ -70,21 +71,23 @@ function EditUser() {
         <div className="Dashboard">
             <div className='Inner-dashboard'>
                 <Sidebar/>
-                <div className="main-dash form-container">
+                <div className="main-dash ">
+                    <div className="form-container">
+
                 <React.Fragment>
-                 <h2>Register Form</h2>
+                 <h2 style={{marginBottom:"33px"}}>Edit User </h2>
                  <form onSubmit={handleSubmit} sx={{"padding":"10px"}} action={<Link to="/login" />}>
                     <Stack spacing={2} direction="row" sx={{marginBottom: 4}}>
-                       <TextField
+                    <TextField
                             type="text"
-                            variant='outlined'
-                            color='secondary'
+                            variant="outlined"
+                            color="secondary"
                             label="Name"
-                            onChange={e => setName(e.target.value)}
+                            onChange={(e) => setName(e.target.value)}
                             value={first_name}
                             fullWidth
                             required
-                        />
+                            />
                         <TextField
                             type="email"
                             variant='outlined'
@@ -118,45 +121,14 @@ function EditUser() {
                             required
                         />
                     </Stack>
-    
-                    {/* <TextField
-                        type="email"
-                        variant='outlined'
-                        color='secondary'
-                        label="Email"
-                        onChange={e => setEmail(e.target.value)}
-                        value={email}
-                        fullWidth
-                        required
-                        sx={{mb: 4}}
-                    /> */}
-                    {/* <TextField
-                        type="text"
-                        variant='outlined'
-                        color='secondary'
-                        label="username"
-                        onChange={e => setUserName(e.target.value)}
-                        value={username}
-                        required
-                        fullWidth
-                        sx={{mb: 4}}
-                    /> */}
-                    {/* <TextField
-                        type="date"
-                        variant='outlined'
-                        color='secondary'
-                        label="Date of Birth"
-                        onChange={e => setDateOfBirth(e.target.value)}
-                        value={dateOfBirth}
-                        fullWidth
-                        required
-                        sx={{mb: 4}}
-                    /> */}
-                    <Button variant="outlined" color="secondary" type="submit">EDit</Button>
+                  
+                    <div style={{display:"flex",justifyContent:"center"}}>
+                        <Button variant="contained" color="secondary" size="medium" style={{padding:"10px 43px"}} type="submit">Edit</Button>
+                    </div>
                 </form>
-                {/* <small>Already have an account? <Link to="/login">Login Here</Link></small> */}
          
             </React.Fragment>
+            </div>
                 </div>
             </div>
         </div>

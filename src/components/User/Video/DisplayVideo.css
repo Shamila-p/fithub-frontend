@@ -1,0 +1,68 @@
+.video-section {
+    position: relative;
+    overflow: hidden;
+        padding: 25px 42px;
+  }
+  
+  .video-container {
+    display: flex;
+    overflow-x: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+  
+  .video-card {
+    flex: 0 0 auto;
+    margin-right: 10px;
+    background-color: transparent;
+    padding: 10px;
+  }
+
+  .video-card.locked .video-thumbnail {
+    filter: blur(5px);
+  }
+  .video-head{
+    padding: 21px;
+    text-align: center;
+    font-size: 31px;
+    color: red;
+    margin-bottom: 10px;
+  }
+
+  .video-name{
+    margin-left: 88px;
+    margin-bottom: -9px;
+    font-size: 26px;
+    text-decoration: underline;
+    color: #611d1d;
+  }
+  
+  .video-thumbnail {
+    height: 200px;
+    width: 350px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Custom scrollbar styles */
+  .video-container::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  .video-container::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  .video-container::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 2.5px;
+  }
+  
+  .video-container::-webkit-scrollbar-thumb:hover {
+    background-color: transparent;
+  }
+  
+  .scroll-buttons {
+    display: none;
+  }
+  

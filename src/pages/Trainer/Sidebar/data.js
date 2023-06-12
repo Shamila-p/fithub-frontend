@@ -1,5 +1,6 @@
 import HomeIcon from '@mui/icons-material/Home';
 
+
 export const SidebarData = [
     {
       icon: HomeIcon,
@@ -13,7 +14,12 @@ export const SidebarData = [
       heading: "Users",
     },
    
- 
+    {
+      path:'/trainer/chat',
+
+        icon: HomeIcon,
+        heading: 'Chat'
+      },
     
     {
       path:'/admin/dashboard',
@@ -21,4 +27,5 @@ export const SidebarData = [
         icon: HomeIcon,
         heading: 'Notification'
       },
+
   ];

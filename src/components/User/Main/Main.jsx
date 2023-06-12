@@ -1,6 +1,7 @@
 import { styled } from '@mui/material/styles';
 import { Box, Grid, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 
 const StyledTypography1 = styled(Typography)({
   textAlign: 'center',
@@ -74,6 +75,8 @@ const StyledButton=styled(Button)({
 })
 
 export default function BasicGrid() {
+const navigate=useNavigate()
+
   return (
     <Box sx={{ flexGrow: 1 }}>
     <Grid container spacing={2} sx={{ justifyContent: 'center', p: '50px', marginTop: '50px' }}>
@@ -82,7 +85,7 @@ export default function BasicGrid() {
   
         <StyledTypography1 variant='h3' gutterBottom>Transform your fitness journey today!</StyledTypography1>
         <StyledTypography2 variant="h6" gutterBottom>Redefine your limits and experience the difference.</StyledTypography2>
-        <StyledButton variant="contained" sx={{ mt: 2, backgroundColor: '#a24868', color: '#fff', '&:hover': { backgroundColor: '#ff4081' } }}> Get started</StyledButton>
+        <StyledButton onClick={()=>{navigate('/signup')}} variant="contained" sx={{ mt: 2, backgroundColor: '#a24868', color: '#fff', '&:hover': { backgroundColor: '#ff4081' } }}> Get started</StyledButton>
       </Grid>
       <Grid item xs={12} sm={6}>
         <StyledBox>

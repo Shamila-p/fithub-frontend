@@ -17,6 +17,10 @@ import {useState,useEffect} from 'react';
 import Swal from "sweetalert2";
 import { login } from '../../../Utils/urls';
 import axios from '../../../Utils/axios';
+import {useDispatch, useSelector} from 'react-redux'
+// import {setLogin} from '../../../redux/authSlice'
+import jwtDecode from 'jwt-decode';
+import {setLogin} from '../../../redux/authSlice'
 
 const theme = createTheme();
 
@@ -26,7 +30,10 @@ export default function SignIn() {
     // const dispatch = useDispatch();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-   
+    const dispatch=useDispatch()
+    const user = useSelector(state=>state.user.user)
+    console.log("sele",user)
+
 
     useEffect(() =>{
       if (localStorage.getItem("user_authTokens")){
@@ -50,7 +57,18 @@ export default function SignIn() {
     
               if (response.status === 200) {
                   localStorage.setItem('user_authTokens', JSON.stringify(response.data))
-                  navigate("/");
+                  const decodedUser = jwtDecode(response.data.access);
+                  dispatch(setLogin({user:jwtDecode(response.data.access)}))
+                  if (decodedUser && decodedUser.height === null) {
+                    console.log("height illa")
+                    navigate("/logined");
+                  } else {
+                    navigate("/user/profile");
+                    console.log("height und")
+
+                  }
+                
+                  
                   Swal.fire({
                       position: "center",
                       icon: "success",
@@ -128,10 +146,10 @@ export default function SignIn() {
                 setPassword(e.target.value);
                     }} 
             />
-            <FormControlLabel
+            {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
+            /> */}
             <Button
               type="submit"
               fullWidth
@@ -147,7 +165,7 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

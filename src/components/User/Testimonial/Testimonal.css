@@ -1,4 +1,4 @@
-/* .carousel-root {
+.carousel-root {
     width: 64% !important;
     margin: auto !important;
     margin-top: 3% !important;
@@ -12,6 +12,7 @@
   
   .carousel .slide img {
     width: 139px !important;
+    height: 139px !important;
     border-radius: 50%;
   }
   
@@ -27,6 +28,7 @@
     padding-right: 5%;
     border: 1px solid #ddd;
     height: 286px;
+    line-height: 3rem;
   }
   
   .carousel .control-dots {
@@ -93,9 +95,7 @@
     top: 35% !important;
   }
   
-  .App {
-    text-align: center;
-  }
+  
   
   @media only screen and (max-width: 934px) {
     .carousel-root {
@@ -125,4 +125,4 @@
       width: 24% !important;
       border-radius: 50%;
     }
-  } */
+  }

@@ -49,9 +49,10 @@ function EditPlan() {
     <div className="Dashboard">
     <div className='Inner-dashboard'>
         <Sidebar/>
-        <div className="main-dash form-container">
+        <div className="main-dash ">
+          <div className="form-container">
         <React.Fragment>
-         <h2>Add Trainer</h2>
+         <h2 style={{marginBottom:"33px"}}>Edit Plan</h2>
          <form onSubmit={handleSubmit} sx={{"padding":"10px"}} action={<Link to="/login" />}>
             
             <Stack spacing={2} direction="row" sx={{marginBottom: 4}}>
@@ -92,12 +93,15 @@ function EditPlan() {
             </Stack>
 
            
+            <div style={{display:"flex",justifyContent:"center"}}>
             
-            <Button variant="outlined" color="secondary" type="submit">ADD</Button>
+            <Button variant="contained" color="secondary" type="submit" style={{padding:"10px 43px"}}>EDIT</Button>
+        </div>
         </form>
         {/* <small>Already have an account? <Link to="/login">Login Here</Link></small> */}
  
     </React.Fragment>
+    </div>
         </div>
     </div>
 </div>

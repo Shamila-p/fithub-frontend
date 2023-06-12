@@ -5,9 +5,12 @@ import axios from '../../../Utils/axios';
 import { getUsers,userBlock,deleteUser } from '../../../Utils/urls';
 import { useNavigate } from 'react-router-dom'
 import EditUser from '../EditUser/EditUser';
-import Button from '@mui/material/Button';
 import Icon from '@mui/material/Icon';
 import Swal from "sweetalert2";
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+
 
 
 
@@ -147,14 +150,14 @@ function AdminUserData() {
           // <p style={{"textAlign":"center"}}>{user.assigned_trainer?"yes":"No"}</p>,
           
           
-          <button onClick={() => handleViewButtonClick(user.id)}>View Details</button>,
-          <button onClick={() => handleEditButtonClick(user.id)}>Edit</button>,
+          <Button variant='outlined' color="success" size="medium" style={{minWidth:"154px"}} onClick={() => handleViewButtonClick(user.id)}>View Details</Button>,
+          <Button variant="outlined" color="primary" size="medium" startIcon={<EditIcon />} onClick={() => handleEditButtonClick(user.id)}>Edit</Button>,
           // <button onClick={() => navigate("/admin/users/edit/${userId}")}>Edit</button>,
-          <button onClick={() => handleBlock(user.id, user.is_active)}>
+          <Button variant="outlined" color="secondary" size="medium" onClick={() => handleBlock(user.id, user.is_active)}>
   {user.is_active ? "Block" : "Unblock"}
-</button>,
+</Button>,
 
-          <button onClick={() => handleDelete(user.id)}>Delete</button>,
+          <Button variant="outlined" color="error" startIcon={<DeleteIcon />} size="medium" onClick={() => handleDelete(user.id)}>Delete</Button>,
           
         ]);
         setData(extractedData);
@@ -178,7 +181,6 @@ function AdminUserData() {
           <MUIDataTable
             data={data}
             columns={columns}
-            title={"Employee List"}
             options={options}
           />
     </div>

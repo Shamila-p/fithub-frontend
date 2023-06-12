@@ -53,9 +53,10 @@ const [selected,setSelected]=useState(0)
     <div className="Dashboard">
             <div className='Inner-dashboard'>
                 <Sidebar/>
-                <div className="main-dash form-container">
+                <div className="main-dash ">
+                  <div className="form-container" style={{margin:"100px"}}>
                 <React.Fragment>
-                 <h2>Register Form</h2>
+                 <h2 style={{marginBottom:"33px"}}>Edit Trainer </h2>
                  <form onSubmit={handleSubmit} sx={{"padding":"10px"}} >
                     <Stack spacing={2} direction="row" sx={{marginBottom: 4}}>
                        <TextField
@@ -101,12 +102,14 @@ const [selected,setSelected]=useState(0)
                             required
                         />
                     </Stack>
+                      <div style={{display:"flex",justifyContent:"center"}}>
     
-                    <Button variant="outlined" color="secondary" type="submit">EDIT</Button>
+                      <Button variant="contained" color="secondary" type="submit" style={{padding:"10px 43px"}}>EDIT</Button>
+                      </div>
                 </form>
-                {/* <small>Already have an account? <Link to="/login">Login Here</Link></small> */}
          
             </React.Fragment>
+            </div>
                 </div>
             </div>
         </div>

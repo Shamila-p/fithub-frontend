@@ -16,7 +16,7 @@ function Landing() {
         <ActionAreaCard/>
         <Transform/>
         <DisplayVideo/>
-        {/* <Testimonial/> */}
+        <Testimonial/>
         <Footer/>
     </div>
   )

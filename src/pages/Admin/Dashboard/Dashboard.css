@@ -51,11 +51,13 @@
     width: 100%;
   } */
   
-  .active {
+
+
+  .actives {
     background: #f799a354;
     margin-left: 0;
   }
-  .active::before {
+  .actives::before {
     content: "";
     width: 8px;
     height: 100%;
@@ -66,4 +68,8 @@
     padding: 10px;
     border-left: 1px solid black;
     margin-left: 35px;
+  }
+
+  @media screen and (max-width:500px){
+  
   }

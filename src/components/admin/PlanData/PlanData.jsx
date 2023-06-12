@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import {getPlans,deletePlan} from '../../../Utils/urls'
 import axios from '../../../Utils/axios';
 import Swal from 'sweetalert2';
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 function PlanData() {
     const columns = ["type","amount","features", "",""];
@@ -81,9 +82,9 @@ function PlanData() {
                 plan.type,
                 plan.amount,
                 plan.features.map(feature => feature.feature_text).join(','),
-                    <button onClick={() => handleEdit(plan.id)}>Edit</button>,
+                    <Button variant="outlined" color="primary" size="medium" startIcon={<EditIcon />} onClick={() => handleEdit(plan.id)}>Edit</Button>,
                   
-                    <button onClick={() => handleDelete(plan.id)}>Delete</button>,
+                    <Button variant="outlined" color="error" startIcon={<DeleteIcon />} onClick={() => handleDelete(plan.id)}>Delete</Button>,
             ])
             setData(extractedData)
         })
@@ -103,7 +104,7 @@ function PlanData() {
      ADD PLAN
    </Button>
    </div>
-   <div className="datatable-wrapper">
+   <div className="datatable-wrapper" style={{marginLeft:"75px"}}>
          <MUIDataTable
            data={data}
            columns={columns}

@@ -3,14 +3,16 @@ import '../UserData/AdminUserData.css'
 import MUIDataTable from "mui-datatables";
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom'
-import { getTrainers,blockTrainer,deleteTrainer } from '../../../Utils/urls';
+import { getTrainers,blockTrainer,deleteTrainer,assignedUsers } from '../../../Utils/urls';
 import axios from '../../../Utils/axios'
 import Swal from "sweetalert2";
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 function AdminTrainerData() {
   const columns = ["Name","Username","email","phone","status","User Assigned", "","",""];
   const [data,setData]=useState([])
+  const [users,setUsers]=useState([])
   const [isBlocked, setIsBlocked] = useState(false)
 
   const options = {
@@ -43,6 +45,20 @@ function AdminTrainerData() {
   const handleEditButtonClick=(trainerId)=>{
     navigate(`/admin/trainer/edit/${trainerId}`)
   }
+
+  const handleViewUsers=(trainerId)=>{
+    navigate(`/admin/trainers/assigned-users/${trainerId}`)
+    //  const url= `${assignedUsers}${trainerId}`
+    //   axios
+    //       .get(url,{headers:{"Authorization": `Bearer ${access}`,'Content-Type': 'application/json' },})
+    //       .then((response)=>{
+    //         console.log(response.data)
+    //         setUsers(response.data)
+    //       }
+    //       ) .catch((error) => {
+    //           console.log("error", error);
+    //       });
+}
 
   const handleBlock=(trainerId)=>{
     let confirmationText = isBlocked
@@ -119,20 +135,20 @@ const handleDelete=(trainerId)=>{
             trainer.username,
             trainer.email,
             trainer.phone,
-            <button className={trainer.is_active?"green-button":"red-button"}>{trainer.is_active ? "unblock" : "block"}</button>,
+            <button className={trainer.is_active?"green-button":"red-button"}>{trainer.is_active ? "Active" : "Blocked"}</button>,
             trainer.assigned_user ? (
                 <>
                   <div style={{ textAlign: 'center' }}>Yes</div>
-                  <button className="view-users-button">View Users</button>
+                  <Button variant='outlined' color="success" size="medium" style={{minWidth:"154px"}} className="view-users-button" onClick={() => handleViewUsers(trainer.id)}>View Users</Button>
                 </>
               ) : (
                 <div style={{ textAlign: 'center' }}>No</div>
               ),
-                <button onClick={() => handleEditButtonClick(trainer.id)}>Edit</button>,
-                <button onClick={() => handleBlock(trainer.id)}>Block/unblock
-        </button>,
+                <Button variant="outlined" color="primary" size="medium" startIcon={<EditIcon />} onClick={() => handleEditButtonClick(trainer.id)}>Edit</Button>,
+                <Button variant="outlined" color="secondary" size="medium" onClick={() => handleBlock(trainer.id)}>Block/unblock
+        </Button>,
 
-                <button onClick={() => handleDelete(trainer.id)}>Delete</button>,
+                <Button variant="outlined" color="error" startIcon={<DeleteIcon />} size="medium" onClick={() => handleDelete(trainer.id)}>Delete</Button>,
         ])
         setData(extractedData)
     })

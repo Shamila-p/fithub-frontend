@@ -49,6 +49,7 @@ function TrainerUserData() {
           user.age,
           user.height,
           user.weight,
+          user.plan_type
          
           
           
@@ -65,8 +66,8 @@ function TrainerUserData() {
 
     <div className="button-wrapper">
     </div>
-    <div className="datatable-wrapper">
-          <MUIDataTable
+    <div className="datatable-wrapper" style={{maxWidth:"90%",marginLeft:"12px"}}>
+          <MUIDataTable 
             data={data}
             columns={columns}
             title={"Employee List"}

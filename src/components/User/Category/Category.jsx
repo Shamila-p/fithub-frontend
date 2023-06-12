@@ -11,8 +11,11 @@ export default function Category() {
     const [isBodyToning,setIsBodyToning] = useState(false)
     const [isWeightGain,setIsWeightGain] = useState(false)
     const [isPcod,setIsPcod] = useState(false)
+    const [selectedCategory, setSelectedCategory] = useState('');
+
 
     const handleWeightLose = () =>{
+        setSelectedCategory('Weight Loss');
         setIsWeightLose(true)
     };
 
@@ -51,7 +54,7 @@ export default function Category() {
                 </h2>
               </div>
               <div className="plan-container">
-                <PricingPlan/>
+                <PricingPlan selectedCategory={selectedCategory}/>
 
               </div>
             </div>
@@ -59,6 +62,7 @@ export default function Category() {
     }
 
     const handleBodyToning = () => {
+        setSelectedCategory('Body Toning');
         setIsWeightLose(false)
         setIsBodyToning(true)
     };
@@ -94,7 +98,7 @@ export default function Category() {
                 </h2>
               </div>
               <div className="plan-container">
-                <PricingPlan/>
+                <PricingPlan selectedCategory={selectedCategory}/>
 
               </div>
             </div>
@@ -102,6 +106,7 @@ export default function Category() {
     }
 
     const handleWeightGain = () => {
+        setSelectedCategory('Weight Gain');
         setIsBodyToning(false)
         setIsWeightGain(true)
     };
@@ -138,7 +143,7 @@ export default function Category() {
             </h2>
           </div>
           <div className="plan-container">
-            <PricingPlan/>
+            <PricingPlan selectedCategory={selectedCategory}/>
 
           </div>
         </div>
@@ -146,6 +151,8 @@ export default function Category() {
     }
 
     const handlePcod = () => {
+        setSelectedCategory('PCOD');
+        console.log("k",selectedCategory)
         setIsWeightGain(false)
         setIsPcod(true)
     };
@@ -182,7 +189,7 @@ export default function Category() {
                 </h2>
               </div>
               <div className="plan-container">
-                <PricingPlan/>
+                <PricingPlan selectedCategory={selectedCategory}/>
 
               </div>
             </div>

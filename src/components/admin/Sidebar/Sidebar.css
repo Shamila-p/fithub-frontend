@@ -33,3 +33,29 @@
     margin-left: 35px;
   }
   
+
+  @media screen and (max-width:1200px){
+    .menuItem>span{
+      display: none;
+      width:10%
+    }
+    .logo{
+      display: none;
+
+    }
+    .main-dash{
+      justify-content: flex-start;
+      margin-top: 2rem;
+      border-left:none
+    }
+  }
+
+  
+  @media screen and (max-width:800px){
+   
+    .main-dash{
+      justify-content: flex-start;
+      margin-top: 2rem;
+      border-left:none
+    }
+  }

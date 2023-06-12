@@ -5,6 +5,9 @@ import axios from '../../../Utils/axios'
 import { useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
 import { useParams } from "react-router-dom"
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import Button from '@mui/material/Button';
 
 
 function SingleTrainerData() {
@@ -114,13 +117,13 @@ function SingleTrainerData() {
                 trainer.username,
                 trainer.email,
                 trainer.phone,
-                <button className={trainer.is_active?"green-button":"red-button"}>{trainer.is_active ? "unblock" : "block"}</button>,
+                <button className={trainer.is_active?"green-button":"red-button"}>{trainer.is_active ? "Active" : "Blocked"}</button>,
                 
-                    <button onClick={() => handleEditButtonClick(trainer.id)}>Edit</button>,
-                    <button onClick={() => handleBlock(trainer.id)}>Block/unblock
-            </button>,
+                    <Button variant="outlined" color="primary" size="medium" startIcon={<EditIcon />}   onClick={() => handleEditButtonClick(trainer.id)}>Edit</Button>,
+                    <Button variant="outlined" color="secondary" size="medium" onClick={() => handleBlock(trainer.id)}>Block/unblock
+            </Button>,
     
-                    <button onClick={() => handleDelete(trainer.id)}>Delete</button>,
+                    <Button variant="outlined" color="error" startIcon={<DeleteIcon />} onClick={() => handleDelete(trainer.id)}>Delete</Button>,
             ])
             setData(extractedData)
         })
@@ -130,7 +133,7 @@ function SingleTrainerData() {
       },[access,handleBlock]);
     
   return (
-    <div className="datatable-wrapper" style={{marginTop:"100px"}}>
+    <div className="datatable-wrapper" style={{marginTop:"100px",maxWidth:"90%",marginLeft:"20px"}}>
     <MUIDataTable
       data={data}
       columns={columns}

@@ -15,6 +15,9 @@ import Swal from "sweetalert2";
 import { login } from '../../../Utils/urls';
 import axios from '../../../Utils/axios';
 import jwt_decode from "jwt-decode";
+import { useDispatch } from 'react-redux';
+import { setLogin } from '../../../redux/adminAuthSlice';
+
 
 
 const theme = createTheme();
@@ -23,6 +26,7 @@ export default function SignInSide() {
   const navigate = useNavigate()
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch()
 
   useEffect(() =>{
     if (localStorage.getItem("authTokens")){
@@ -51,6 +55,8 @@ export default function SignInSide() {
             console.log(decoded_token)
             if(decoded_token.is_superuser){
               localStorage.setItem('authTokens', JSON.stringify(response.data))
+              dispatch(setLogin({admin:jwt_decode(response.data.access)}))
+
               // dispatch(setAuthToken(JSON.stringify(response.data)))
               navigate("/admin/dashboard");
               Swal.fire({

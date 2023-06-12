@@ -17,7 +17,7 @@
   overflow-x: scroll;
   max-height: 500px;
   position: relative;
-  max-width: 90%;
+  max-width: 80%;
   }
 
   .button-wrapper {
@@ -26,7 +26,7 @@
     padding: 10px 23px;
     position: relative;
     top:-44px;
-    left: -114px;
+    left: -214px;
   }
 
 /*   
@@ -45,8 +45,18 @@
     padding:35px
 }
 .green-button{
-  background-color: #adff2fb0;
+  background-color: #508105;
+  padding:10px 41px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 16px;
 }
 .red-button{
   background-color: red;
+  padding:10px 41px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 16px;
 }

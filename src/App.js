@@ -25,6 +25,15 @@ import AdminNotification from './pages/Admin/Notification/AdminNotification';
 import SingleTrainer from './pages/Admin/Trainers/SingleTrainer';
 import ChallengeCategory from './pages/Admin/Challenges/ChallengeCategory';
 import ChallengeVideo from './components/admin/Challenges/ChallengeVideo';
+import UserProfile from './pages/User/UserProfile/UserProfile';
+import PrivateRouteAdmin from './Utils/PrivateRouteAdmin'
+import PrivateRouteUser from './Utils/PrivateRouteUser';
+import PrivateRouteTrainer from './Utils/PrivateRouteTrainer';
+import WorkoutVideos from './pages/User/WorkoutVideos/WorkoutVideos';
+import AssignedUsers from './components/admin/TrainerData/AssignedUsers'
+import AssignedUserPage from './pages/Admin/Trainers/AssignedUserPage';
+import Chat from './pages/Trainer/Chat/Chat';
+// import AdminPrivateRoute from './Utils/AdminPrivateRoute'
 
 function App() {
   return (
@@ -35,38 +44,49 @@ function App() {
           {/* <------- Admin Routes -------> */}
 
          <Route path="/admin" element={<AdminLogin/>} />
-         <Route path="/admin/dashboard" element={<Dashboard/>} />
-         <Route path="/admin/users" element={<Users/>} />
-         <Route path="/admin/users/view/:userId" element={<ViewUser/>} />
-         <Route path="/admin/users/edit/:userId" element={<EditUser/>} />
-         <Route path="/admin/trainers" element={<Trainers/>} />
-         <Route path="/admin/trainer/:trainerId" element={<SingleTrainer/>} />
-         <Route path="/admin/trainers/add" element={<AddTrainers/>} />
-         <Route path="/admin/trainer/edit/:trainerId" element={<EditTrainer/>} />
-         <Route path="/admin/plan" element={<Plan/>} />
-         <Route path="/admin/plan/add" element={<AddPlan/>} />
-         <Route path="/admin/plan/edit/:planId" element={<EditPlan/>} />
-         <Route path="/admin/notification" element={<AdminNotification/>} />
-         <Route path="/admin/challenges" element={<ChallengeCategory/>} />
-         <Route path="/admin/challenges/:categoryId/videos" element={<ChallengeVideo/>} />
-
+         <Route element={<PrivateRouteAdmin/>}>
+            <Route path="/admin/dashboard" element={<Dashboard/>} />
+            <Route path="/admin/users" element={<Users/>} />
+            <Route path="/admin/users/view/:userId" element={<ViewUser/>} />
+            <Route path="/admin/users/edit/:userId" element={<EditUser/>} />
+            <Route path="/admin/trainers" element={<Trainers/>} />
+            <Route path="/admin/trainers/assigned-users/:trainerId" element={<AssignedUserPage/>} />
+            <Route path="/admin/trainer/:trainerId" element={<SingleTrainer/>} />
+            <Route path="/admin/trainers/add" element={<AddTrainers/>} />
+            <Route path="/admin/trainer/edit/:trainerId" element={<EditTrainer/>} />
+            <Route path="/admin/plan" element={<Plan/>} />
+            <Route path="/admin/plan/add" element={<AddPlan/>} />
+            <Route path="/admin/plan/edit/:planId" element={<EditPlan/>} />
+            <Route path="/admin/notification" element={<AdminNotification/>} />
+            <Route path="/admin/challenges/" element={<ChallengeCategory/>} />
+            <Route path="/admin/challenges/:categoryId/videos" element={<ChallengeVideo/>} />
+        </Route>
 
 
          {/* <------- User Routes -------> */}
 
          <Route path="/" exact element={<Landing/>} />
          <Route path="/login" element={<LoginForm/>} />
-         <Route path="/logined" element={<LoginedPage/>} />
-         <Route path="/category" element={<CategoryPage/>} />
          <Route path="/signup" element={<SignupForm/>} />
-         <Route path="/payment" element={<PricingPlan/>} />
+          <Route element={<PrivateRouteUser/>}>
+            <Route path="/logined" element={<LoginedPage/>} />
+            <Route path="/category" element={<CategoryPage/>} />
+            <Route path="/payment" element={<PricingPlan/>} />
+            <Route path="/user/profile" element={<UserProfile/>} />
+            <Route path="/workout-videos" element={<WorkoutVideos/>} />
+            <Route path="/chat" element={<Chat/>} />
+         </Route>
 
 
          {/* <------- Guide Routes -------> */}
 
          <Route path="/trainer/login" element={<TrainerLogin/>} />
-         <Route path="/trainer/dashboard" element={<TrainerDashboard/>} />
-         <Route path="/trainer/users" element={<TrainerUsers/>} />
+         <Route element={<PrivateRouteTrainer/>}>
+            <Route path="/trainer/dashboard" element={<TrainerDashboard/>} />
+            <Route path="/trainer/users" element={<TrainerUsers/>} />
+            <Route path="/trainer/chat" element={<Chat/>} />
+
+         </Route>
         </Routes>
       </Router>
     </div>

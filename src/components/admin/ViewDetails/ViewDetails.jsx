@@ -172,6 +172,11 @@ function ViewDetails() {
                   <h4 style={{fontSize:"22px",marginLeft:"50px"}}>Assigned Trainer:</h4>
                 <UserPhone sx={{fontSize:"20px",marginTop:"5px",padding:"10px"}}>{user.assigned_trainer?"Yes":"NO"}</UserPhone>
               </UserDetailsItem>
+              <UserDetailsItem sx={{marginBottom:"2px"}}>
+                  <h4 style={{ fontSize: "20px", marginTop: "5px",marginLeft:"45px", padding: "10px" }}>Plan Type: {user.plan_type}</h4>
+                 
+              </UserDetailsItem>
+
             </UserDetails>
           </UserProfile>
         </Grid>
@@ -202,12 +207,20 @@ function ViewDetails() {
                   <h4 style={{fontSize:"27px"}}>Gender:</h4>
                 <UserPhone sx={{fontSize:"20px",marginTop:"5px",padding:"10px"}}>{user.gender}</UserPhone>
               </UserDetailsItem>
+              
               <UserDetailsItem sx={{marginBottom:"2px"}}>
-                <UserPhone sx={{fontSize:"20px",marginTop:"5px",padding:"10px"}}>{user.assigned_trainer?<Button onClick={() => handleViewButtonClick(user.trainer_id)} size="small" variant="contained" >
-          View Trainer
-          </Button>:<Button size="small" variant="contained" onClick={handleOpenModal} >
-          Assign Trainer
-          </Button>}</UserPhone>
+              <UserPhone sx={{ fontSize: "20px", marginTop: "5px", padding: "10px" }}>
+  {user.assigned_trainer ? (
+    <Button onClick={() => handleViewButtonClick(user.trainer_id)} size="small" variant="contained">
+      View Trainer
+    </Button>
+  ) : (
+    <Button size="small" variant="contained" onClick={handleOpenModal}>
+      Assign Trainer
+    </Button>
+  )}
+</UserPhone>
+
           <Modal open={openModal} onClose={handleCloseModal} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             <Paper sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '400px', height: '400px' }}>
               <Box sx={{ padding: '1rem', width: '100%' }}>

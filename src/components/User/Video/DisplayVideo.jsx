@@ -1,71 +1,92 @@
-import React,{useEffect, useState}from 'react'
-import { getVideos,showVideos ,categories} from '../../../Utils/urls';
+import './DisplayVideo.css'
+import React, { useEffect, useState } from 'react';
+import { getVideos, categories } from '../../../Utils/urls';
 import axios from '../../../Utils/axios';
-
+import { useNavigate } from 'react-router-dom';
+import Swal from "sweetalert2";
+import { useSelector } from 'react-redux';
 
 function DisplayVideo() {
-    const [categoryVideos, setCategoryVideos] = useState({});
+  const [categoryVideos, setCategoryVideos] = useState({});
+  const navigate = useNavigate();
+  const user = useSelector(state => state.user.user);
 
-    useEffect(() => {
-        axios
-          .get(categories, {
-            headers: { "Content-Type": "application/json" },
-          })
-          .then((categoriesResponse) => {
-            const categoryData = categoriesResponse.data;
-            const categorizedVideos = {};
-    
-            const categoryPromises = categoryData.map((category) =>
-              axios
-                .get(`${getVideos}${category.id}`, {
-                  headers: { "Content-Type": "application/json" },
-                })
-                .then((videosResponse) => {
-                  const videos = videosResponse.data;
-                  categorizedVideos[category.id] = { category: category.category_name, videos };
-                })
-                .catch((error) => {
-                  console.error("Error fetching videos for category:", category.category_name, error);
-                })
-            );
-    
-            Promise.all(categoryPromises)
-              .then(() => {
-                setCategoryVideos(categorizedVideos);
-              })
-              .catch((error) => {
-                console.error("Error fetching videos for categories:", error);
-              });
+  useEffect(() => {
+    axios
+      .get(categories, {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((categoriesResponse) => {
+        const categoryData = categoriesResponse.data;
+        const categorizedVideos = {};
+
+        const categoryPromises = categoryData.map((category) =>
+          axios
+            .get(`${getVideos}${category.id}`, {
+              headers: { "Content-Type": "application/json" },
+            })
+            .then((videosResponse) => {
+              const videos = videosResponse.data;
+              categorizedVideos[category.id] = { category: category.category_name, videos };
+            })
+            .catch((error) => {
+              console.error("Error fetching videos for category:", category.category_name, error);
+            })
+        );
+
+        Promise.all(categoryPromises)
+          .then(() => {
+            setCategoryVideos(categorizedVideos);
           })
           .catch((error) => {
-            console.error("Error fetching categories:", error);
+            console.error("Error fetching videos for categories:", error);
           });
-      }, []);
-    
-  const handleVideoClick = (videoUrl) => {
-    // Redirect to the respective YouTube video URL
-    window.open(videoUrl, '_blank');
+      })
+      .catch((error) => {
+        console.error("Error fetching categories:", error);
+      });
+  }, []);
+
+  const handleVideoClick = (videoUrl, isLocked) => {
+    if (!user && isLocked) {
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "You can access this video only if you are logged in.",
+        showConfirmButton: true,
+      });
+      navigate('/login'); // Navigate to the login page
+    } else {
+      window.open(videoUrl, '_blank');
+    }
   };
+
   return (
-    <div>
-      <h2>Videos</h2>
+    <div style={{ textAlign: 'left' }}>
+      <h2 className='video-head'>Display Videos</h2>
       {Object.keys(categoryVideos).map((categoryId) => (
         <div key={categoryId}>
-          <h3>{categoryVideos[categoryId].category}</h3>
-          <div className="video-cards" style={{"display":"flex","flexDirection":"row"}}>
-            {categoryVideos[categoryId].videos.map((video) => (
-              <div key={video.id} className="video-card" onClick={() => handleVideoClick(video.url)} style={{marginRight:"10px"}}>
-                <img src={video.thumbnail_url} alt={video.title} style={{"height":"100px","widows":"200px"}} />
-                <div className="video-details">
-                  <h3>{video.title}</h3>
+          <h3 className='video-name'>{categoryVideos[categoryId].category}</h3>
+          <div className="video-section">
+            <div className="video-container" id={`video-container-${categoryId}`}>
+              {categoryVideos[categoryId].videos.map((video, index) => (
+                <div
+                  key={video.id}
+                  className={`video-card ${index >= 2 && !user ? 'locked' : ''}`}
+                  onClick={() => handleVideoClick(video.url, index >= 2)}
+                >
+                  <img src={video.thumbnail_url} alt={video.title} className="video-thumbnail" />
+                  <div className="video-details">
+                    <h3 style={{ textAlign: "center" }}>{video.title}</h3>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       ))}
     </div>
-  )
+  );
 }
 
-export default DisplayVideo
+export default DisplayVideo;

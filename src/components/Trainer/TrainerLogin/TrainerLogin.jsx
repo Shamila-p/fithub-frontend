@@ -15,6 +15,8 @@ import Swal from "sweetalert2";
 import { login } from '../../../Utils/urls';
 import axios from '../../../Utils/axios';
 import jwt_decode from "jwt-decode";
+import { useDispatch } from 'react-redux';
+import { setLogin } from '../../../redux/trainerAuthSlice';
 
 
 const theme = createTheme();
@@ -23,6 +25,7 @@ export default function SignInSide() {
   const navigate = useNavigate()
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch=useDispatch()
 
   useEffect(() =>{
     if (localStorage.getItem("trainer_authTokens")){
@@ -51,7 +54,7 @@ export default function SignInSide() {
             console.log(decoded_token)
             if(decoded_token){
               localStorage.setItem('trainer_authTokens', JSON.stringify(response.data))
-              // dispatch(setAuthToken(JSON.stringify(response.data)))
+              dispatch(setLogin({trainer:jwt_decode(response.data.access)}))
               navigate("/trainer/dashboard");
               Swal.fire({
                   position: "center",
@@ -124,7 +127,7 @@ export default function SignInSide() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h4">
-              Admin Login
+              Trainer Login
             </Typography>
             <Box component="form" onSubmit={handleSubmit} noValidate  sx={{ mt: 1 }}>
               <TextField
