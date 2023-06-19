@@ -77,6 +77,7 @@ function PlanData() {
         axios.get(getPlans,{
           headers: {"Authorization": `Bearer ${access}`,'Content-Type': 'application/json' },
         }).then((response)=>{
+           console.log(response.data)
             const extractedData=
             response.data.map(plan=>[
                 plan.type,

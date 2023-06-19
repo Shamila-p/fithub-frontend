@@ -62,6 +62,7 @@ function ChallengeVideo() {
     console.log(body)
 
     const handleAdd=()=>{
+      console.log("add")
       const url=`${addVideo}${categoryId}`
       axios.post(url,body,{
         headers: {
@@ -139,7 +140,10 @@ function ChallengeVideo() {
                 handleEditOpenModal(video.id)
               }}/>,
               
-              <DeleteRoundedIcon  onClick={() => handleDelete(video.id)}/>
+              <DeleteRoundedIcon  onClick={() => handleDelete(video.id)}/>,
+              setTitle(video.title),
+              setUrl(video.url)
+
             ]
 
             )
@@ -186,10 +190,9 @@ function ChallengeVideo() {
         <Modal open={openEditModal} onClose={handleEditCloseModal} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             <Paper sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '400px', height: '400px' }}>
               <Box sx={{ padding: '1rem', width: '100%' }}>
-                <FormControl fullWidth>
+                <FormControl fullWidth style={{padding:"10px"}}>
                   <InputLabel id="trainer-label">Video Title</InputLabel>
                   <Input type="text" id="title"  value={title} onChange={(e) => setTitle(e.target.value)}/>
-                  <InputLabel id="trainer-label" >Video url</InputLabel>
 
                   <TextField
                     fullWidth

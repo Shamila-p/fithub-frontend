@@ -104,78 +104,78 @@ function TrainerDashboardContainer() {
     console.log("name",first_name)
     
 
-    const ImageClick = () =>{
-        if(isActive){
-            setisActive(false);
-            }else{
-            setisActive(true);
-            }
-        }
+    // const ImageClick = () =>{
+    //     if(isActive){
+    //         setisActive(false);
+    //         }else{
+    //         setisActive(true);
+    //         }
+    //     }
 
-    const FullImage=()=>{
-        if(fullimage){
-            setfullimage(false);
-            }
-            else{
-            setfullimage(true);
-            }
-        }
-         const imageUrl = `${baseUrl}${image}`;
+    // const FullImage=()=>{
+    //     if(fullimage){
+    //         setfullimage(false);
+    //         }
+    //         else{
+    //         setfullimage(true);
+    //         }
+    //     }
+    //      const imageUrl = `${baseUrl}${image}`;
 
 
-        const addImage = async () => {
-            const { value: file } = await Swal.fire({
-              title: "Select image",
-              input: "file",
+    //     const addImage = async () => {
+    //         const { value: file } = await Swal.fire({
+    //           title: "Select image",
+    //           input: "file",
         
-              inputAttributes: {
-                accept: "image/*",
-                "aria-label": "Upload your profile picture",
-              },
-            });
+    //           inputAttributes: {
+    //             accept: "image/*",
+    //             "aria-label": "Upload your profile picture",
+    //           },
+    //         });
         
-            if (file) {
-              const reader = new FileReader();
-              reader.onload = (e) => {
-                Swal.fire({
-                  title: "img",
-                  imageUrl: e.target.result,
-                  imageHeight: 400,
-                  showDenyButton: true,
-                  showCancelButton: true,
-                  confirmButtonText: "Update",
-                  denyButtonText: `Change`,
-                }).then((result) => {
-                  /* Read more about isConfirmed, isDenied below */
-                  if (result.isConfirmed) {
-                    uploading(file);
-                  } else if (result.isDenied) {
-                    addImage();
-                  }
-                });
-              };
-              reader.readAsDataURL(file);
-            }
-            function uploading(file) {
-                const authTokens = JSON.parse(localStorage.getItem('authTokens'))
-                const access = authTokens?.access
-                const formData = new FormData();
-                formData.append('image', file);
-                axios
-                    .post(`${imageupload}${trainerId}`, formData,{
-                        headers: { "Authorization": `Bearer ${access}`,
-                    }
-                    })
-                    .then((response) => {
-                    console.log(response)
-                    setImage(response.data?.profile_image);
-                    // setImage(`localhost:8000${res.data?.image}`);
-                    })
-                    .catch((err) => {
-                    console.log(err);
-                    });
-            }
-          };
+    //         if (file) {
+    //           const reader = new FileReader();
+    //           reader.onload = (e) => {
+    //             Swal.fire({
+    //               title: "img",
+    //               imageUrl: e.target.result,
+    //               imageHeight: 400,
+    //               showDenyButton: true,
+    //               showCancelButton: true,
+    //               confirmButtonText: "Update",
+    //               denyButtonText: `Change`,
+    //             }).then((result) => {
+    //               /* Read more about isConfirmed, isDenied below */
+    //               if (result.isConfirmed) {
+    //                 uploading(file);
+    //               } else if (result.isDenied) {
+    //                 addImage();
+    //               }
+    //             });
+    //           };
+    //           reader.readAsDataURL(file);
+    //         }
+    //         function uploading(file) {
+    //             const authTokens = JSON.parse(localStorage.getItem('authTokens'))
+    //             const access = authTokens?.access
+    //             const formData = new FormData();
+    //             formData.append('image', file);
+    //             axios
+    //                 .post(`${imageupload}${trainerId}`, formData,{
+    //                     headers: { "Authorization": `Bearer ${access}`,
+    //                 }
+    //                 })
+    //                 .then((response) => {
+    //                 console.log(response)
+    //                 setImage(response.data?.profile_image);
+    //                 // setImage(`localhost:8000${res.data?.image}`);
+    //                 })
+    //                 .catch((err) => {
+    //                 console.log(err);
+    //                 });
+    //         }
+    //       };
           
     // const Heart=()=>{
     // if(heart){
@@ -193,7 +193,7 @@ function TrainerDashboardContainer() {
     <div className="container-profile">
     <div className={`card ${isActive ? "black" : "" }`}>
       
-    <div className={`top_part ${isActive ? "font_icons" : "" }`}>
+    {/* <div className={`top_part ${isActive ? "font_icons" : "" }`}>
                 <div className="icons">
                     <i onClick={ImageClick} className="fa fa-moon-o"></i>    
                 </div>
@@ -206,7 +206,7 @@ function TrainerDashboardContainer() {
                 <span onClick={FullImage}><img src={`http://localhost:8000${image}`} alt="Profile" />
 </span>
             
-            </div>
+            </div> */}
         <div className="prof-details">
 
         <input
@@ -251,9 +251,9 @@ function TrainerDashboardContainer() {
               </div>
             ) : (
                 <div className="button-profile-container">
-                <div className="button">
+                {/* <div className="button">
                     <button onClick={addImage}  >Update Image </button>
-                </div>
+                </div> */}
                 <div className="button">
                     <button onClick={handleEditClick} >Edit Profile </button>
                 </div>

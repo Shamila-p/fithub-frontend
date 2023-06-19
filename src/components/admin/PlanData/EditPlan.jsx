@@ -1,10 +1,10 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { TextField, Button, Container, Stack } from '@mui/material';
 import { Link,useParams } from "react-router-dom"
 import Sidebar from '../Sidebar/Sidebar';
 import axios from '../../../Utils/axios'
 import { useNavigate } from 'react-router-dom';
-import {editPlan} from '../../../Utils/urls'
+import {editPlan,getSinglePlan} from '../../../Utils/urls'
 
 
 function EditPlan() {
@@ -16,6 +16,24 @@ function EditPlan() {
 
     const navigate=useNavigate()
     const { planId } = useParams();
+    useEffect(() => {
+      const url = `${getSinglePlan}${planId}`; // Replace with the actual endpoint to fetch plan data
+      axios
+        .get(url, {
+          headers: { Authorization: `Bearer ${access}` },
+        })
+        .then((response) => {
+          const { data } = response;
+          console.log(data); // Log the fetched plan data to verify its structure
+    
+          setType(data.type);
+          setAmount(data.amount);
+          setFeatures(data.features.map((feature) => feature.feature_text));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, [planId, access]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -36,7 +54,7 @@ function EditPlan() {
             .then ((response) => {
     
                 console.log(response)
-                navigate(`/admin/plans`)
+                navigate(`/admin/plan`)
                      
             
             }).catch((err) => {
@@ -95,7 +113,7 @@ function EditPlan() {
            
             <div style={{display:"flex",justifyContent:"center"}}>
             
-            <Button variant="contained" color="secondary" type="submit" style={{padding:"10px 43px"}}>EDIT</Button>
+            <Button variant="contained" color="secondary" type="submit" style={{padding:"10px 43px"}}>SAVE</Button>
         </div>
         </form>
         {/* <small>Already have an account? <Link to="/login">Login Here</Link></small> */}

@@ -18,7 +18,7 @@ import EditIcon from '@mui/icons-material/Edit';
 function AdminUserData() {
   const navigate = useNavigate()
   // const [ownPlan, setOwnPlan] = useState(true);
-  const columns = ["Name","Username","email","phone","status","own plan", "","","",""];
+  const columns = ["Name","Username","email","phone","status","own plan", "",""];
   // const columns = useMemo(() => {
   //   const baseColumns = ["Name", "Username", "Email", "Phone", "Status", "Own Plan"];
   
@@ -151,13 +151,13 @@ function AdminUserData() {
           
           
           <Button variant='outlined' color="success" size="medium" style={{minWidth:"154px"}} onClick={() => handleViewButtonClick(user.id)}>View Details</Button>,
-          <Button variant="outlined" color="primary" size="medium" startIcon={<EditIcon />} onClick={() => handleEditButtonClick(user.id)}>Edit</Button>,
+          // <Button variant="outlined" color="primary" size="medium" startIcon={<EditIcon />} onClick={() => handleEditButtonClick(user.id)}>Edit</Button>,
           // <button onClick={() => navigate("/admin/users/edit/${userId}")}>Edit</button>,
           <Button variant="outlined" color="secondary" size="medium" onClick={() => handleBlock(user.id, user.is_active)}>
   {user.is_active ? "Block" : "Unblock"}
 </Button>,
 
-          <Button variant="outlined" color="error" startIcon={<DeleteIcon />} size="medium" onClick={() => handleDelete(user.id)}>Delete</Button>,
+          // <Button variant="outlined" color="error" startIcon={<DeleteIcon />} size="medium" onClick={() => handleDelete(user.id)}>Delete</Button>,
           
         ]);
         setData(extractedData);
@@ -177,7 +177,7 @@ function AdminUserData() {
       ADD USER
     </Button> */}
     </div>
-    <div className="datatable-wrapper">
+    <div className="datatable-wrapper" style={{maxWidth:"90%"}}>
           <MUIDataTable
             data={data}
             columns={columns}

@@ -29,10 +29,10 @@ export const SidebarData = [
       icon: HomeIcon,
       heading: 'Packages'
     },
-    {
-      path:'/admin/notification',
+    // {
+    //   path:'/admin/notification',
 
-        icon: HomeIcon,
-        heading: 'Notification'
-      },
+    //     icon: HomeIcon,
+    //     heading: 'Notification'
+    //   },
   ];

@@ -17,6 +17,7 @@ function AddTrainers() {
    
 
     const navigate=useNavigate()
+    
 
     const formData = new FormData();
           formData.append('username', username);

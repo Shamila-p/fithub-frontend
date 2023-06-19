@@ -17,6 +17,7 @@ import Swal from "sweetalert2";
 import axios from '../../../Utils/axios';
 import { useNavigate } from 'react-router-dom';
 import {useState} from 'react';
+import { useForm } from "react-hook-form";
 
 
 
@@ -33,9 +34,9 @@ export default function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState('')
   const phonePrefix = "+91"
   const navigate = useNavigate();
+  const {register,handleSubmit,formState:{errors},watch}=useForm()
 
-  const handleSubmit = (event) => {
-
+  const onSubmit = (event) => {
       event.preventDefault();
       const fullPhone = phonePrefix + phone;
     
@@ -108,13 +109,12 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} >
                 <TextField
                   autoComplete="given-name"
                   name="name"
-                  required
                   fullWidth
                   id="name"
                   label="Name"
@@ -123,7 +123,21 @@ export default function SignUp() {
                   onChange={(e) => {
                     setName(e.target.value);
                         }}
+                  inputProps={register("name", {
+                    required: true,
+                    minLength: 3,
+                  })}
                 />
+                {errors.name && errors.name.type === "required" && (
+                  <p className="text-xs italic text-red-500">
+                    This Field is Required
+                  </p>
+                )}
+                {errors.name && errors.name.type === "minLength" && (
+                  <p className="text-xs italic text-red-500">
+                    Minimum 3 Characters Required
+                  </p>
+                )}
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -137,7 +151,27 @@ export default function SignUp() {
                   onChange={(e) => {
                     setUsername(e.target.value);
                         }}
+                  inputProps={register("username", {
+                    required: true,
+                    maxLength: 10,
+                    minLength: 3,
+                  })}
                 />
+                  {errors.username && errors.username.type === "required" && (
+                  <p className="text-xs italic text-red-500">
+                    This Field is Required
+                  </p>
+                )}
+                {errors.username && errors.username.type === "minLength" && (
+                  <p className="text-xs italic text-red-500">
+                    Minimum 3 Characters Required
+                  </p>
+                )}
+                {errors.username && errors.username.type === "maxLength" && (
+                  <p className="text-xs italic text-red-500">
+                    Maximum Length Exceeded
+                  </p>
+                )}
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -151,7 +185,21 @@ export default function SignUp() {
                   onChange={(e) => {
                     setEmail(e.target.value);
                         }}
+                  inputProps={register("email", {
+                    required: true,
+                    pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  })}
                 />
+                 {errors.email && errors.email.type === "required" && (
+                    <p className="text-xs italic text-red-500">
+                      This Field is Required
+                    </p>
+                  )}
+                  {errors.email && errors.email.type === "pattern" && (
+                    <p className="text-xs italic text-red-500">
+                      You have entered an invalid email address.Please try again
+                    </p>
+                  )}
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -165,7 +213,27 @@ export default function SignUp() {
                   onChange={(e) => {
                     setPhone(e.target.value);
                         }}
+                    inputProps={register("phone", {
+                        required:true,
+                        pattern: /^([1-9]\d*)$/,
+                        maxLength: 10,
+                      })}
                 />
+                 {errors.phone && errors.phone.type === "required" && (
+                    <p className="text-xs italic text-red-500">
+                      This Field is Required
+                    </p>
+                  )}
+                  {errors.phone && errors.phone.type === "pattern" && (
+                    <p className="text-xs italic text-red-500">
+                      You have entered an invalid phone. Please try again
+                    </p>
+                  )}
+                  {errors.phone && errors.phone.type === "maxLength" && (
+                  <p className="text-xs italic text-red-500">
+                    Not a valid phone.maximum 10 characters only.
+                  </p>
+                )}
               </Grid>
 
               <Grid item xs={12}>
@@ -181,7 +249,34 @@ export default function SignUp() {
                   onChange={(e) => {
                     setPassword(e.target.value);
                         }}
+                  inputProps={register("password", {
+                    required: true,
+                    pattern: /^(?=.\d)(?=.[a-z])(?=.*[A-Z]).{5,}$/,
+                    maxLength: 10,
+                    minLength: 5,
+                  })}
                 />
+                {errors.password && errors.password.type === "required" && (
+                  <p className="text-xs italic text-red-500">
+                    Enter a Valid Password
+                  </p>
+                )}
+                {errors.password && errors.password.type === "pattern" && (
+                  <p className="text-xs italic text-red-500">
+                    Password Should Contain At Least One Capital Letter One
+                    Small Letter and one digit
+                  </p>
+                )}
+                {errors.password && errors.password.type === "maxLength" && (
+                  <p className="text-xs italic text-red-500">
+                    Exceeds Maximum Length
+                  </p>
+                )}
+                {errors.password && errors.password.type === "minLength" && (
+                  <p className="text-xs italic text-red-500">
+                    Minimum 5 Characters Required
+                  </p>
+                )}
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -196,7 +291,15 @@ export default function SignUp() {
                   onChange={(e) => {
                     setConfirmPassword(e.target.value);
                         }}
+                  inputProps={register("ConfirmPassword", {
+                    validate: (value) => value === watch("password"),
+                  })}
                 />
+                  {errors.ConfirmPassword && (
+                    <p className="text-xs italic text-red-500">
+                      Passwords do not match
+                    </p>
+                  )}
               </Grid>
               <Grid item xs={12}>
                 {/* <FormControlLabel

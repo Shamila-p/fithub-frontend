@@ -319,7 +319,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { categories, addCategory, editCategory, deleteCategory } from '../../../Utils/urls';
+import { categories, addCategory, editCategory, deleteCategory ,blockCategory} from '../../../Utils/urls';
 import axios from '../../../Utils/axios';
 import Modal from '@mui/material/Modal';
 import FormControl from '@mui/material/FormControl';
@@ -329,6 +329,8 @@ import MenuItem from '@mui/material/MenuItem';
 import { Paper } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import EditIcon from '@mui/icons-material/Edit';
+import Swal from "sweetalert2";
+
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 
 export default function CategoryForChallenge() {
@@ -338,6 +340,9 @@ export default function CategoryForChallenge() {
   const [category, setCategory] = useState('');
   const [editCategoryName, setEditCategoryName] = useState('');
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+  const [isBlocked, setIsBlocked] = useState(false);
+
+
 
   const authTokens = JSON.parse(localStorage.getItem('authTokens'));
   const access = authTokens.access;
@@ -413,6 +418,35 @@ export default function CategoryForChallenge() {
         console.log(response)
       })
   }
+  const handleBlock = (categoryId, isBlocked) => {
+    let confirmationText = isBlocked
+      ? "Are you sure you want to unblock this category?"
+      : "Are you sure you want to block this category?";
+  
+    Swal.fire({
+      title: 'Confirmation',
+      text: confirmationText,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const url = `${blockCategory}${categoryId}`;
+        axios
+          .post(url, {
+            headers:  {"Authorization": `Bearer ${access}`,'Content-Type': 'application/json' },
+          })
+          .then((response) => {
+            setIsBlocked(!isBlocked); // Update the isBlocked state
+          })
+          .catch((error) => {
+            console.log("error", error);
+          });
+      }
+    });
+  };
 
   useEffect(() => {
     axios
@@ -425,7 +459,7 @@ export default function CategoryForChallenge() {
       .then((response) => {
         setData(response.data);
       });
-  }, [handleEdit,handleDelete]);
+  }, [handleEdit,handleDelete,handleBlock]);
 
   return (
     <div className="challenge" style={{ display: 'flex', flexDirection: 'column' }}>
@@ -476,9 +510,12 @@ export default function CategoryForChallenge() {
                 <EditIcon onClick={()=>{
                   handleEditModalOpen(category.id)
                 }}/>
+                <Button variant="outlined" color="secondary" size="medium" onClick={() => handleBlock(category.id, category.is_active)}>
+  {category.is_active ? "Unblock" : "Block"}
+</Button>,
                     
-                <DeleteRoundedIcon onClick={()=>{
-                  handleDelete(category.id)}}/>
+                {/* <DeleteRoundedIcon onClick={()=>{
+                  handleDelete(category.id)}}/> */}
             </CardActions>
           </Card>
         ))}

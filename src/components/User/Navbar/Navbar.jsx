@@ -22,6 +22,11 @@ export default function ButtonAppBar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+
+  const handleChat =()=>{
+    navigate('/chat')
+
+  }
   const handleLogout = () => {
     if (user) {
       dispatch(logoutUser());
@@ -66,7 +71,7 @@ export default function ButtonAppBar() {
               Login
             </Button>
           )}
-          {user && user.assigned_trainer && <Button>Chat</Button>}
+          {user && user.assigned_trainer && <Button onClick={handleChat}>Chat</Button>}
         </Toolbar>
       </AppBar>
     </Box>

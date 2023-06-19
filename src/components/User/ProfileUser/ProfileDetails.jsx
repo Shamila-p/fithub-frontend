@@ -225,15 +225,15 @@ function ProfileDetails() {
   </div>
        {editMode ? (
               <div className="button-profile-container" style={{ paddingBottom: "0px" }}>
-                <button className='button' style={{padding:"10px 40px",background:"black",color:"white",borderRadius:"10px"}} onClick={handleSaveClick}>
+                <button className='button' style={{padding:"10px 40px",background:"black",color:"white",borderRadius:"10px",marginTop:"10px"}} onClick={handleSaveClick}>
                   Save
                 </button>
               </div>
             ) : (
                 <div className="button-profile-container">
-                <div className="button">
+                {/* <div className="button">
                     <button  >Update Image </button>
-                </div>
+                </div> */}
                 <div className="button">
                     <button onClick={handleEditClick} >Edit Profile </button>
                 </div>

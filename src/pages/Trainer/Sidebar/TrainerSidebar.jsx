@@ -59,7 +59,6 @@ function TrainerSidebar() {
       <Routes>
         <Route path="/trainer/dashboard" element={<TrainerDashboard/>} />
         <Route path="/trainer/users" element={<TrainerUsers/>} />
-        <Route path="/admin/notification" />
         <Route path="/trainer/chat" element={<Chat/>}/>
         {/* Add routes for other pages */}
       </Routes>

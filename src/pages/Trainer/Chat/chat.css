@@ -486,13 +486,17 @@ html {
 }
 
 .chat-container {
-  display: flex;
+    display: flex;
+    width: 76%;
+    margin: auto;
+    border: 1px solid black;
+
 }
 
 .sidebar {
   width: 250px;
-  background-color: #901616;
   border-right: 1px solid #e6e6e6;
+  text-align: center;
 }
 
 .search-container {
@@ -547,6 +551,7 @@ html {
 
 .user-info {
   flex: 1;
+  font-size: 32px;
 }
 
 .user-name {
@@ -582,12 +587,7 @@ html {
   cursor: pointer;
 }
 
-.chat-body {
-  padding: 20px;
-  height: calc(100vh - 220px);
-  overflow-y: auto;
-  scrollbar-width: thin;
-}
+
 
 /* .message {
   display: flex;
@@ -620,11 +620,12 @@ html {
 
 .input-container {
   position: relative;
-  flex: 1;
+  display: flex;
+  width:100%
 }
 
 .message-input {
-  width: 100%;
+  width: 92%;
   padding: 8px;
   border: 1px solid #e6e6e6;
   border-radius: 4px;
@@ -642,7 +643,7 @@ html {
   background-color: #007bff;
   color: #fff;
   border: none;
-  padding: 6px 12px;
+  padding: 6px 22px;
   border-radius: 4px;
   cursor: pointer;
   margin-left: 10px;
@@ -663,16 +664,33 @@ html {
   color: #888;
   margin-top: 2px;
 }
+.chat-body {
+  padding: 20px;
+  height: calc(100vh - 159px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
 .message {
   display: flex;
   margin-bottom: 20px;
 }
 
-.sent-by-trainer .message-text {
+.message-time {
+  margin-top: 22px;
+  font-size: 11px;
+  margin-left: 5px;
+}
+
+/* .sent-by-trainer {
+  display: flex;
+  justify-content: flex-end;
+} */
+
+/* .sent-by-trainer .message-text {
   background-color: #e2e2e2;
   padding: 10px;
   border-radius: 10px;
-  align-self: flex-start;
 }
 
 .sent-by-user .message-text {
@@ -680,5 +698,5 @@ html {
   padding: 10px;
   border-radius: 10px;
   color: #fff;
-  align-self: flex-end;
-}
+} */
+

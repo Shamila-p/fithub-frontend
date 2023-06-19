@@ -21,11 +21,11 @@ export const SidebarData = [
         heading: 'Chat'
       },
     
-    {
-      path:'/admin/dashboard',
+    // {
+    //   path:'/admin/dashboard',
 
-        icon: HomeIcon,
-        heading: 'Notification'
-      },
+    //     icon: HomeIcon,
+    //     heading: 'Notification'
+    //   },
 
   ];
