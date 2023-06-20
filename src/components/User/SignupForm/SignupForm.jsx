@@ -37,7 +37,7 @@ export default function SignUp() {
   const {register,handleSubmit,formState:{errors},watch}=useForm()
 
   const onSubmit = (event) => {
-      event.preventDefault();
+      // event.preventDefault();
       const fullPhone = phonePrefix + phone;
     
     Swal.fire({
