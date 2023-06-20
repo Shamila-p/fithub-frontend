@@ -1,14 +1,3 @@
-/* .datatable-wrapper{
-    padding: 10px 23px;
-    margin-left: 33px;
-    margin-top: -34px;
-    overflow-y: scroll;
-    max-height: 450px;
-    position: fixed;
-    overflow-y: scroll;
-  width: 72%;
-} */
-
 .datatable-wrapper {
   padding: 10px 23px;
   margin-left: 0;
@@ -29,19 +18,13 @@
     left: -214px;
   }
 
-/*   
-  @media (max-width: 768px) {
-    .datatable-wrapper {
-      width: 60%; /* Set full width on smaller screens */
-    /* } */
-  /* } */ 
   .add-user{
     display: flex;
     flex-direction: column;
 
   }
 
-  .item-heading{
+.item-heading{
     padding:35px
 }
 .green-button{
