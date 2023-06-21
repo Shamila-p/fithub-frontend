@@ -1,9 +1,11 @@
-export const baseUrl = " https://fithubapi.buildnship.in";
+export const baseUrl = "http://127.0.0.1:8000";
 export const signup="/api/signup/";
 export const login="/api/login/";
 export const getUsers = "/api/get-user/";
+export const getMembers = "/api/get-members/";
 export const viewUser = "/api/view-user/";
 export const editUser = "/api/edit/";
+export const verifyEmail = "/api/verify-email/";
 export const userBlock = "/api/block-user/";
 export const deleteUser = "/api/delete-user/";
 export const getTrainers = "/api/get-trainers/";

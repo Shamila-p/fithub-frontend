@@ -12,6 +12,11 @@ export const SidebarData = [
       heading: "Users",
     },
     {
+      path:'/admin/fithub-members',
+      icon: HomeIcon,
+      heading: "New Members",
+    },
+    {
       path:'/admin/trainers',
 
       icon: HomeIcon,

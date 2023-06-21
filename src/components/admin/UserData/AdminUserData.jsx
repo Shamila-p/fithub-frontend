@@ -16,8 +16,9 @@ import EditIcon from '@mui/icons-material/Edit';
 
 
 function AdminUserData() {
+  
   const navigate = useNavigate()
-  // const [ownPlan, setOwnPlan] = useState(true);
+ 
   const columns = ["Name","Username","email","phone","status","own plan", "",""];
   // const columns = useMemo(() => {
   //   const baseColumns = ["Name", "Username", "Email", "Phone", "Status", "Own Plan"];

@@ -12,6 +12,7 @@ import CategoryForChallenge from '../Challenges/CategoryForChallenge';
 import { logoutAdmin } from '../../../redux/adminAuthSlice'
 import { useDispatch } from 'react-redux';
 import HomeIcon from '@mui/icons-material/Home';
+import AdminMemberData from '../MemberData/AdminMemberData';
 
 
 
@@ -63,6 +64,7 @@ function Sidebar() {
         <Routes>
           <Route path="/admin/dashboard" />
           <Route path="/admin/users" element={<AdminUserData />} />
+          <Route path="/admin/fithub-members" element={<AdminMemberData/>} />
           <Route path="/admin/trainers" element={<AdminTrainerData/>}/>
           <Route path="/admin/plan" element={<PlanData/>}/>
           <Route path="/admin/challenges" element={<CategoryForChallenge/>}/>

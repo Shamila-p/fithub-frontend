@@ -33,6 +33,8 @@ import WorkoutVideos from './pages/User/WorkoutVideos/WorkoutVideos';
 import AssignedUsers from './components/admin/TrainerData/AssignedUsers'
 import AssignedUserPage from './pages/Admin/Trainers/AssignedUserPage';
 import Chat from './pages/Trainer/Chat/Chat';
+import Member from './pages/Admin/Users/Member';
+import EmailVerification from './components/User/Email/EmailVerification';
 // import AdminPrivateRoute from './Utils/AdminPrivateRoute'
 
 function App() {
@@ -47,6 +49,7 @@ function App() {
          <Route element={<PrivateRouteAdmin/>}>
             <Route path="/admin/dashboard" element={<Dashboard/>} />
             <Route path="/admin/users" element={<Users/>} />
+            <Route path="/admin/fithub-members" element={<Member/>} />
             <Route path="/admin/users/view/:userId" element={<ViewUser/>} />
             <Route path="/admin/users/edit/:userId" element={<EditUser/>} />
             <Route path="/admin/trainers" element={<Trainers/>} />
@@ -75,6 +78,7 @@ function App() {
             <Route path="/user/profile" element={<UserProfile/>} />
             <Route path="/workout-videos" element={<WorkoutVideos/>} />
             <Route path="/chat" element={<Chat/>} />
+            <Route path="/verify-email/:verificationId" element={<EmailVerification/>} />
          </Route>
 
 
