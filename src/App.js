@@ -35,9 +35,12 @@ import AssignedUserPage from './pages/Admin/Trainers/AssignedUserPage';
 import Chat from './pages/Trainer/Chat/Chat';
 import Member from './pages/Admin/Users/Member';
 import EmailVerification from './components/User/Email/EmailVerification';
+import UpgradePlan from './components/User/UpgradePlan/UpgradePlan';
 // import AdminPrivateRoute from './Utils/AdminPrivateRoute'
-
+import { Navigate } from 'react-router-dom';
 function App() {
+  const user = JSON.parse(localStorage.getItem('user_authTokens'));
+
   return (
     <div className="App">
       <Router>
@@ -69,11 +72,13 @@ function App() {
          {/* <------- User Routes -------> */}
 
          <Route path="/" exact element={<Landing/>} />
-         <Route path="/login" element={<LoginForm/>} />
+         <Route path="/login"  element={<LoginForm/>} />
+         {/* <Route path="/login" element={user?<Navigate to="/user/profile"/>:<LoginForm/>}/> */}
          <Route path="/signup" element={<SignupForm/>} />
           <Route element={<PrivateRouteUser/>}>
             <Route path="/logined" element={<LoginedPage/>} />
             <Route path="/category" element={<CategoryPage/>} />
+            <Route path="/upgrade-plan" element={<UpgradePlan/>} />
             <Route path="/payment" element={<PricingPlan/>} />
             <Route path="/user/profile" element={<UserProfile/>} />
             <Route path="/workout-videos" element={<WorkoutVideos/>} />

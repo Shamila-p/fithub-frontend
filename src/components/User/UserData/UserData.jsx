@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import './UserData.css'
 import axios from '../../../Utils/axios'
-import {editUser} from '../../../Utils/urls'
+import {editUser, userEntry} from '../../../Utils/urls'
 import { useNavigate } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 import { useSelector } from 'react-redux';
@@ -73,6 +73,8 @@ function UserData() {
         const access = authTokens?.access
         const decoded_token = jwt_decode(access)
         const userId=decoded_token.user_id
+        const heights=decoded_token.height
+        console.log(heights)
         const body={
             height:height,
             weight:weight,
@@ -81,7 +83,7 @@ function UserData() {
             user_id:userId
           }
         const handleSubmit= () => {
-           axios.post(`${editUser}${userId}`,body,{
+           axios.post(`${userEntry}${userId}`,body,{
           headers: { "Authorization": `Bearer ${access}`,"Content-Type": "application/json" },
            }).then((response)=>{
             console.log('success')

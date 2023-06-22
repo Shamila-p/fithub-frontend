@@ -341,16 +341,16 @@ const newTimestamp = (timestamp) => {
           </div>
         
           <div className="chat-body">
-          {messages.map((message, index) => (
-            <div
-              key={index}
-              className={`message ${message.sender === userId ? 'sent-by-user' : 'sent-by-trainer'}`}
-            >
-              <div className="message-text">{message.message}</div>
-              <div className="message-time">{newTimestamp(message.timestamp)}</div>
-            </div>
-          ))}
-        </div>
+  {messages.map((message, index) => (
+    <div
+      key={index}
+      className={`message-container ${message.sentBy === userId ? 'sent-message' : 'received-message'}`}
+    >
+      <div className="message-text">{message.message}</div>
+      <div className="message-time">{newTimestamp(message.timestamp)}</div>
+    </div>
+  ))}
+</div>
          
           <div className="chat-footer">
             <form id="send-message-form" style={{width:"100%"}} onSubmit={handleSendMessage}>

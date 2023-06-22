@@ -56,7 +56,14 @@ function DisplayVideo() {
         showConfirmButton: true,
       });
       navigate('/login'); // Navigate to the login page
-    } else {
+    }else if (user && !user.height) {
+      Swal.fire({
+        position: "center",
+        icon: "info",
+        title: "Please provide your height to unlock the videos.",
+        showConfirmButton: true,
+      });}
+     else {
       window.open(videoUrl, '_blank');
     }
   };
@@ -72,7 +79,7 @@ function DisplayVideo() {
               {categoryVideos[categoryId].videos.map((video, index) => (
                 <div
                   key={video.id}
-                  className={`video-card ${index >= 2 && !user ? 'locked' : ''}`}
+                  className={`video-card ${index >= 2 && (!user || !user.height) ? 'locked' : ''}`}
                   onClick={() => handleVideoClick(video.url, index >= 2)}
                 >
                   <img src={video.thumbnail_url} alt={video.title} className="video-thumbnail" />

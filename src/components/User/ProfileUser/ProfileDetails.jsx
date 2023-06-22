@@ -30,6 +30,7 @@ function ProfileDetails() {
   const [isActive, setIsActive] = useState(false);
   const [ownPlan, setOwnPlan] = useState(false);
   const [validationError, setValidationError] = useState("");
+  const [emailEdit, setEmailEdit] = useState("");
 
   console.log("currently", isActive)
   const authTokens = JSON.parse(localStorage.getItem('user_authTokens'))
@@ -59,9 +60,12 @@ function ProfileDetails() {
       axios.post(`${editUser}${userId}`, editBody, {
         headers: { "Authorization": `Bearer ${access}`, "Content-Type": "application/json" },
       }).then((response) => {
-        console.log('success')
-      })
+        console.log('success',response.data)
+        fetchData();
       setEditMode(false);
+
+      })
+
     }
   };
 
@@ -100,7 +104,7 @@ function ProfileDetails() {
     setChangePasswordModalOpen(false)
   }
 
-  useEffect(() => {
+  const fetchData = () => {
     axios
       .get(`${getUsers}`, {
         headers: { "Authorization": `Bearer ${access}` },
@@ -117,11 +121,34 @@ function ProfileDetails() {
         setAge(response.data[0].age);
         setGender(response.data[0].gender);
         setOwnPlan(response.data[0].own_plan);
-        response.data[0].is_active ? setIsActive(true) : setIsActive(false)
+        response.data[0].is_active ? setIsActive(true) : setIsActive(false);
       });
-  }, [])
+  };
+
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const validateFields = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailRegex.test(email)) {
+    setValidationError("Invalid email address");
+    return false;
+  }
+
+
+  
+  if (phone === "0000000000") {
+    setValidationError("Invalid phone number");
+    return false;
+  }
+
+  if (phone.startsWith("0")) {
+    setValidationError("Invalid phone number");
+    return false;
+  }
     if (Number(height) < 0) {
       setValidationError("Height cannot be negative");
       return false;
@@ -232,6 +259,9 @@ function ProfileDetails() {
         </div>
       ) : (
           <div className="button-profile-container">
+             {/* <div className="button">
+                    <button  >Update Image </button>
+                </div> */}
             <div className="button">
               <button onClick={handleEditClick} >Edit Profile </button>
             </div>
@@ -264,43 +294,50 @@ function ProfileDetails() {
                 navigate(`/workout-videos`)
               }} >Watch Videos</button>
             </div>
-            {ownPlan ? (
-              <div className="button">
-                <button onClick={handleOpenKnowStatusModal} >Know Status </button>
-                <Modal open={knowStatusModalOpen} onClose={handleCloseKnowStatusModal} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <Paper sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '400px', height: '400px' }}>
-                    <Box sx={{ padding: '1rem', width: '100%' }}>
-                      {assignedTrainer ? (
-                        <div>
-                          <p style={{ textAlign: 'center', marginBottom: '1rem', fontSize: "20px" }}>Trainer assigned</p>
-                          <Button onClick={handleChat} variant="contained" sx={{
-                            margin: '12px 37%'
-                          }}>
-                            Chat with Trainer
-                          </Button>
-                        </div>
-                      ) : (
-                          <div>
-                            <p style={{ textAlign: 'center', marginBottom: '1rem', fontSize: "20px" }}>No trainer assigned</p>
-                            <p style={{ textAlign: 'center' }}>Please contact the admin for further assistance.</p>
-                          </div>
-                        )}
-                    </Box>
-                  </Paper>
-                </Modal>
-              </div>
-            ) : null}
-            {isActive ? (
-              <div className="button">
-                <button onClick={() => {
-                  navigate(`/plan`)
-                }} >View Plan </button>
-              </div>
-            ) : null}
+
+            {ownPlan?(<div className="button">
+                    <button onClick={handleOpenKnowStatusModal} >Know Status </button>
+                    <Modal open={knowStatusModalOpen} onClose={handleCloseKnowStatusModal} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                      <Paper sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '400px', height: '400px' }}>
+                        <Box sx={{ padding: '1rem', width: '100%' }}>
+                         {assignedTrainer?<div>
+                            <p style={{ textAlign: 'center', marginBottom: '1rem',fontSize:"20px" }}>Trainer  assigned</p> 
+                            <Button onClick={handleChat} variant="contained" sx={{
+                                margin: '12px 37%',
+                                fontSize: '0.8rem',
+                                padding: '8px 12px',
+                                minWidth: '103px'
+                            }}>
+                            Go to Chat
+                            </Button>
+                         </div>
+                         :
+                         <>
+                         <p style={{ textAlign: 'center', marginBottom: '1rem',fontSize:"20px" }}>
+            The trainer will be assigned shortly. Once the trainer is assigned, you can chat with them using the chat option displayed on your screen.
+          </p>
+          <Button  onClick={handleCloseKnowStatusModal} variant="contained"small sx={{margin:"12px 40%"}}>
+          Ok
+        </Button></>
+                         } 
+                        
+                         
+                        </Box>
+                      </Paper>
+                    </Modal>
+                    <div className="button">
+              <button onClick={() => {{navigate('/upgrade-plan')}
+              }} >Change Plan</button>
+            </div>
+                </div>
+                ):(<div className="button">
+                    <button onClick={()=>{navigate('/category')}} >Own Plan </button>
+                </div>)}
+              
           </div>
         )}
       {validationError && (
-        <div className="error-message">
+        <div className="error-message" style={{color:"red",fontSize:"20px"}}>
           {validationError}
         </div>
       )}

@@ -30,7 +30,7 @@ function TrainerSidebar() {
   return (
     <div className='Sidebar'>
     <div className="logo">
-      <img src="https://uxwing.com/wp-content/themes/uxwing/download/fitness-gym-yoga-spa/fitness-icon.png" alt="" />
+      {/* <img src="https://uxwing.com/wp-content/themes/uxwing/download/fitness-gym-yoga-spa/fitness-icon.png" alt="" /> */}
       <span>FitHub</span>
     </div>
     <div className="menu">

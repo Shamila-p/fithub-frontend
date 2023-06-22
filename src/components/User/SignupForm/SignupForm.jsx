@@ -141,7 +141,7 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  required
+                  
                   fullWidth
                   id="Username"
                   label="Username"
@@ -175,7 +175,7 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  required
+                  
                   fullWidth
                   id="email"
                   label="Email Address"
@@ -203,7 +203,7 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  required
+                  
                   fullWidth
                   id="phone"
                   label="Phone"
@@ -238,7 +238,7 @@ export default function SignUp() {
 
               <Grid item xs={12}>
                 <TextField
-                  required
+                  
                   fullWidth
                   name="password"
                   label="Password"
@@ -280,7 +280,7 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  required
+                  
                   fullWidth
                   name="confirm password"
                   label="Confirm Password"

@@ -420,8 +420,8 @@ export default function CategoryForChallenge() {
   }
   const handleBlock = (categoryId, isBlocked) => {
     let confirmationText = isBlocked
-      ? "Are you sure you want to unblock this category?"
-      : "Are you sure you want to block this category?";
+      ? "Are you sure you want to block this category?"
+      : "Are you sure you want to unblock this category?";
   
     Swal.fire({
       title: 'Confirmation',
@@ -511,7 +511,7 @@ export default function CategoryForChallenge() {
                   handleEditModalOpen(category.id)
                 }}/>
                 <Button variant="outlined" color="secondary" size="medium" onClick={() => handleBlock(category.id, category.is_active)}>
-  {category.is_active ? "Unblock" : "Block"}
+  {category.is_active ? "Block" : "Unblock"}
 </Button>,
                     
                 {/* <DeleteRoundedIcon onClick={()=>{
