@@ -1,5 +1,4 @@
 export const baseUrl = "https://fithubapi.buildnship.in";
-
 export const signup="/api/signup/";
 export const login="/api/login/";
 export const getUsers = "/api/get-user/";
