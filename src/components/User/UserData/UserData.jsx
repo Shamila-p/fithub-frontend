@@ -115,7 +115,7 @@ function UserData() {
         const renderGenderInput  = () => {
             return (
                 <div className="box_container">
-                    <h1>Select your gender</h1>
+                    <h1>Type your gender<br/><span style={{fontSize:"18px"}}>(Female/Male/Other</span>)</h1>
                     <div className="home-container">
 
                         <input

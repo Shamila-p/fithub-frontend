@@ -169,7 +169,7 @@ function ChallengeVideo() {
               <Box sx={{ padding: '1rem', width: '100%' }}>
                 <FormControl fullWidth>
                   <InputLabel id="trainer-label">Video Title</InputLabel>
-                  <Input type="text" id="title"  value={title} onChange={(e) => setTitle(e.target.value)}/>
+                  <Input type="text" id="title"  onChange={(e) => setTitle(e.target.value)}/>
                   <InputLabel id="trainer-label">Video url</InputLabel>
 
                   <TextField

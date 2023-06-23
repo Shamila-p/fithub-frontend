@@ -136,7 +136,7 @@ function ViewDetails() {
             .catch(error => {
                 console.error(error);
               });
-            },[])
+            },[handleAssignTrainer])
   const handleViewButtonClick=(trainerId)=>{
     navigate(`/admin/trainer/${trainerId}`)
   }

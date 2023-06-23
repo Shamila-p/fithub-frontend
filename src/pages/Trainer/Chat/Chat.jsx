@@ -134,7 +134,7 @@ const newTimestamp = (timestamp) => {
 
     if (userId) {
       console.log("theredsid",threadIds)
-      const newSocket = new WebSocket(`ws://127.0.0.1:8000/${trainer ? 'trainer' : 'user'}/chat/${userId}/${threadIds}/`);
+      const newSocket = new WebSocket(`ws://fithubapi.buildnship.in/${trainer ? 'trainer' : 'user'}/chat/${userId}/${threadIds}/`);
 
       setSocket(newSocket);
 

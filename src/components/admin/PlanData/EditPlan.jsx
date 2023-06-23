@@ -5,6 +5,7 @@ import Sidebar from '../Sidebar/Sidebar';
 import axios from '../../../Utils/axios'
 import { useNavigate } from 'react-router-dom';
 import {editPlan,getSinglePlan} from '../../../Utils/urls'
+import Swal from 'sweetalert2';
 
 
 function EditPlan() {
@@ -34,9 +35,14 @@ function EditPlan() {
           console.log(err);
         });
     }, [planId, access]);
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
+         if (Number(amount) < 0) {
+      Swal.fire('Error', 'Amount cannot be negative', 'error');
+      return;
+    }
         const featuresData = features.map((feature) => ({ feature_text: feature }));
     
         const body = {

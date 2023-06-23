@@ -38,6 +38,7 @@ function ProfileDetails() {
   const decoded_token = jwt_decode(access)
   const userId = decoded_token.user_id
   const assignedTrainer = decoded_token.assigned_trainer
+  console.log("trass",assignedTrainer)
   const navigate = useNavigate()
 
   const handleEditClick = () => {
@@ -326,7 +327,7 @@ function ProfileDetails() {
                       </Paper>
                     </Modal>
                     <div className="button">
-              <button onClick={() => {{navigate('/upgrade-plan')}
+              <button style={{marginTop:"-69px"}} onClick={() => {{navigate('/upgrade-plan')}
               }} >Change Plan</button>
             </div>
                 </div>
