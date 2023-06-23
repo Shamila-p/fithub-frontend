@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import jwtDecode from 'jwt-decode'
 
+// const initialState = {
+//   user:localStorage.getItem('user_authTokens')? jwtDecode(localStorage.getItem("user_authTokens")):null
+// }
 const initialState = {
   user:localStorage.getItem('user_authTokens')? jwtDecode(localStorage.getItem("user_authTokens")):null
 }

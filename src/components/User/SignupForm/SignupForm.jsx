@@ -129,12 +129,12 @@ export default function SignUp() {
                   })}
                 />
                 {errors.name && errors.name.type === "required" && (
-                  <p className="text-xs italic text-red-500 error-signup">
+                  <p className="text-xs italic text-red-500 error-signup" style={{color:"red",fontSize:"13px",margin:"9px 0px -0 14px"}}>
                     This Field is Required
                   </p>
                 )}
                 {errors.name && errors.name.type === "minLength" && (
-                  <p className="text-xs italic text-red-500 error-signup">
+                  <p className="text-xs italic text-red-500 error-signup" style={{color:"red",fontSize:"13px",margin:"9px 0px -0 14px"}}>
                     Minimum 3 Characters Required
                   </p>
                 )}
@@ -158,17 +158,17 @@ export default function SignUp() {
                   })}
                 />
                   {errors.username && errors.username.type === "required" && (
-                  <p className="text-xs italic text-red-500 error-signup">
+                  <p className="text-xs italic text-red-500 error-signup" style={{color:"red",fontSize:"13px",margin:"9px 0px -0 14px"}}>
                     This Field is Required
                   </p>
                 )}
                 {errors.username && errors.username.type === "minLength" && (
-                  <p className="text-xs italic text-red-500 error-signup">
+                  <p className="text-xs italic text-red-500 error-signup" style={{color:"red",fontSize:"13px",margin:"9px 0px -0 14px"}}>
                     Minimum 3 Characters Required
                   </p>
                 )}
                 {errors.username && errors.username.type === "maxLength" && (
-                  <p className="text-xs italic text-red-500 error-signup">
+                  <p className="text-xs italic text-red-500 error-signup" style={{color:"red",fontSize:"13px",margin:"9px 0px -0 14px"}}>
                     Maximum Length Exceeded
                   </p>
                 )}
@@ -191,12 +191,12 @@ export default function SignUp() {
                   })}
                 />
                  {errors.email && errors.email.type === "required" && (
-                    <p className="text-xs italic text-red-500 error-signup">
+                    <p className="text-xs italic text-red-500 " style={{color:"red",fontSize:"13px",margin:"9px 0px -0 14px"}}>
                       This Field is Required
                     </p>
                   )}
                   {errors.email && errors.email.type === "pattern" && (
-                    <p className="text-xs italic text-red-500 error-signup">
+                    <p className="text-xs italic text-red-500 error-signup" style={{color:"red",fontSize:"13px",margin:"9px 0px -0 14px"}}>
                       You have entered an invalid email address.Please try again
                     </p>
                   )}
@@ -220,17 +220,17 @@ export default function SignUp() {
                       })}
                 />
                  {errors.phone && errors.phone.type === "required" && (
-                    <p className="text-xs italic text-red-500 error-signup">
+                    <p className="text-xs italic text-red-500 errorsignup" style={{color:"red",fontSize:"13px",margin:"9px 0px -0 14px"}}>
                       This Field is Required
                     </p>
                   )}
                   {errors.phone && errors.phone.type === "pattern" && (
-                    <p className="text-xs italic text-red-500 error-signup">
+                    <p className="text-xs italic text-red-500 " style={{color:"red",fontSize:"13px",margin:"9px 0px -0 14px"}}>
                       You have entered an invalid phone. Please try again
                     </p>
                   )}
                   {errors.phone && errors.phone.type === "maxLength" && (
-                  <p className="text-xs italic text-red-500 error-signup">
+                  <p className="text-xs italic text-red-500 error-signup" style={{color:"red",fontSize:"13px",margin:"9px 0px -0 14px"}}>
                     Not a valid phone.maximum 10 characters only.
                   </p>
                 )}

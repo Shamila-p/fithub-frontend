@@ -135,6 +135,7 @@ const newTimestamp = (timestamp) => {
     if (userId) {
       console.log("theredsid",threadIds)
       const newSocket = new WebSocket(`wss://fithubapi.buildnship.in/ws/${trainer ? 'trainer' : 'user'}/chat/${userId}/${threadIds}/`);
+      // const newSocket = new WebSocket(`ws://127.0.0.1:8000/ws/${trainer ? 'trainer' : 'user'}/chat/${userId}/${threadIds}/`);
 
       setSocket(newSocket);
 
@@ -341,16 +342,18 @@ const newTimestamp = (timestamp) => {
           </div>
         
           <div className="chat-body">
-  {messages.map((message, index) => (
-    <div
-      key={index}
-      className={`message-container ${message.sentBy === userId ? 'sent-message' : 'received-message'}`}
-    >
-      <div className="message-text">{message.message}</div>
-      <div className="message-time">{newTimestamp(message.timestamp)}</div>
-    </div>
-  ))}
-</div>
+            {messages.map((message, index) => (
+
+              
+              <div
+                key={index}
+                className={`message-container ${message.sentBy === userId ? 'sent-message' : 'received-message'}`}
+              >
+                <div className="message-text">{message.message}</div>
+                <div className="message-time">{newTimestamp(message.timestamp)}</div>
+              </div>
+            ))}
+          </div>
          
           <div className="chat-footer">
             <form id="send-message-form" style={{width:"100%"}} onSubmit={handleSendMessage}>

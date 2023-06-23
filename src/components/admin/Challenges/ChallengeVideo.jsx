@@ -176,7 +176,6 @@ function ChallengeVideo() {
                     fullWidth
                     id="url"
                     label="YouTube Video URL"
-                    value={url}
                     onChange={(e) => setUrl(e.target.value)}
                     style={{ marginTop: '1rem' }}
                   />

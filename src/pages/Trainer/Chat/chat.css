@@ -189,23 +189,34 @@
 .message-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
 }
 
 .sent-message {
   align-self: flex-end;
+}
+.sent-message .message-text{
   background-color: #DCF8C6;
+  padding: 8px 10px;
   color: #000000;
   border-radius: 8px;
-  padding: 8px 10px;
   margin-bottom: 4px;
+
 }
 
+.message-time{
+  font-size: 10px;
+  margin-left:20px
+}
 .received-message {
+  align-self: flex-start;
+ 
+}
+.received-message .message-text{
   align-self: flex-start;
   background-color: #F3F3F3;
   color: #000000;
   border-radius: 8px;
   padding: 8px;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
