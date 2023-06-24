@@ -171,6 +171,8 @@ function ProfileDetails() {
       <div className="form-prof-container" style={{ marginTop: "60px" }}>
         <div className="main-profile-data" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: 'center' }}>
           <div className="profile-data" style={{ display: "flex", flexDirection: "row" }}>
+            <div  style={{ display: "flex", flexDirection: "column" }}>
+            <label style={{fontSize:"15px"}}>Name</label>
             <input
               type='text'
               className='name-input'
@@ -180,6 +182,9 @@ function ProfileDetails() {
               onChange={(event) => setName(event.target.value)}
               disabled={!editMode}
             />
+            </div>
+            <div  style={{ display: "flex", flexDirection: "column" }}>
+            <label style={{fontSize:"15px"}}>Username</label>
             <input
               type='text'
               className='username-input'
@@ -189,8 +194,11 @@ function ProfileDetails() {
               onChange={(event) => setUsername(event.target.value)}
               disabled={!editMode}
             />
+            </div>
           </div>
           <div className="profile-data" style={{ display: "flex", flexDirection: "row" }}>
+          <div  style={{ display: "flex", flexDirection: "column" }}>
+            <label style={{fontSize:"15px"}}>Email</label>
             <input
               type='text'
               className='name-input'
@@ -200,6 +208,9 @@ function ProfileDetails() {
               onChange={(event) => setEmail(event.target.value)}
               disabled={!editMode}
             />
+            </div>
+            <div  style={{ display: "flex", flexDirection: "column" }}>
+            <label style={{fontSize:"15px"}}>Phone</label>
             <input
               type='text'
               className='username-input'
@@ -209,8 +220,11 @@ function ProfileDetails() {
               onChange={(event) => setPhone(event.target.value)}
               disabled={!editMode}
             />
+            </div>
           </div>
           <div className="profile-data" style={{ display: "flex", flexDirection: "row" }}>
+          <div  style={{ display: "flex", flexDirection: "column" }}>
+            <label style={{fontSize:"15px"}}>Age</label>
             <input
               type='text'
               className='name-input'
@@ -220,6 +234,9 @@ function ProfileDetails() {
               onChange={(event) => setAge(event.target.value)}
               disabled={!editMode}
             />
+            </div>
+            <div  style={{ display: "flex", flexDirection: "column" }}>
+            <label style={{fontSize:"15px"}}>Gender</label>
             <input
               type='text'
               className='username-input'
@@ -229,8 +246,11 @@ function ProfileDetails() {
               onChange={(event) => setGender(event.target.value)}
               disabled={!editMode}
             />
+            </div>
           </div>
           <div className="profile-data" style={{ display: "flex", flexDirection: "row" }}>
+          <div  style={{ display: "flex", flexDirection: "column" }}>
+            <label style={{fontSize:"15px"}}>Height</label>
             <input
               type='text'
               className='name-input'
@@ -240,6 +260,9 @@ function ProfileDetails() {
               onChange={(event) => setHeight(event.target.value)}
               disabled={!editMode}
             />
+            </div>
+            <div  style={{ display: "flex", flexDirection: "column" }}>
+            <label style={{fontSize:"15px"}}>Weight</label>
             <input
               type='text'
               className='username-input'
@@ -249,6 +272,7 @@ function ProfileDetails() {
               onChange={(event) => setWeight(event.target.value)}
               disabled={!editMode}
             />
+            </div>
           </div>
         </div>
       </div>
@@ -327,7 +351,7 @@ function ProfileDetails() {
                       </Paper>
                     </Modal>
                     <div className="button">
-              <button style={{marginTop:"-69px"}} onClick={() => {{navigate('/upgrade-plan')}
+              <button style={{marginTop:"-14px"}} onClick={() => {{navigate('/upgrade-plan')}
               }} >Change Plan</button>
             </div>
                 </div>
